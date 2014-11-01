@@ -6,6 +6,25 @@ var passport = require('passport');
 var User = require('../models/User');
 var secrets = require('../config/secrets');
 
+// I modified here
+
+exports.getNewPost = function(req, res) {
+  //if (req.user) return res.redirect('/');
+  res.render('newpost', {
+    title: 'New Post'
+  });
+};
+
+exports.addNewPost = function(req, res) {
+  //if (req.user) return res.redirect('/');
+  res.render('newpost', {
+    title: 'New Post with test aaaaaaahhhh'
+  });
+};
+
+//
+
+
 /**
  * GET /login
  * Login page.
