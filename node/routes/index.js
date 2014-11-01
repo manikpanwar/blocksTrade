@@ -32,7 +32,7 @@ router.post('/adduser',function(req,res){
 
     users.insert({
         "username": userName,
-        "userlocation": userLocation,
+        "userlocation": userLocation,   
         "timeuserwaits": timeUserWaits
     },function(err,doc){
         if (err) {
@@ -50,8 +50,6 @@ router.post('/adduser',function(req,res){
 
 });
 
-module.exports = router;
-
 /* GET Userlist page. */
 router.get('/userlist', function(req, res) {
     var db = req.db;
@@ -62,3 +60,7 @@ router.get('/userlist', function(req, res) {
         });
     });
 });
+
+module.exports = router;
+
+
