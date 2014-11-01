@@ -25,6 +25,7 @@ router.post('/adduser',function(req,res){
 
     var userName = req.body.username;
     var userLocation = req.body.userlocation;
+    var userEmail = req.body.useremail;
 
     var users = db.get("users");
 
@@ -33,7 +34,8 @@ router.post('/adduser',function(req,res){
     users.insert({
         "username": userName,
         "userlocation": userLocation,   
-        "timeuserwaits": timeUserWaits
+        "timeuserwaits": timeUserWaits,
+        "useremail": userEmail
     },function(err,doc){
         if (err) {
             // If it failed, return error
