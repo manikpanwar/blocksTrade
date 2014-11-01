@@ -1,0 +1,16 @@
+extends layout
+
+block content
+	h1= title
+	form#formAddPost(name="addpost",method="post",action="/addpost")
+		input#inputUserName(type="text", placeholder="username", name="username")
+		input#inputUserLocation(type="text", placeholder="userlocation", name="userlocation")
+		input#inputDate(type="date", placeholder="mm/dd/yyyy", name="date")
+		input#inputTime(type="time", name="time")
+		select#inputWindow(name="window")
+			option(value="0.5") 30 min
+			option(value="1") 1 hour
+			option(value="1.5") 1.5 hours
+			option(value="2") 2 hours
+		input(type='hidden', name='_csrf', value=_csrf)
+		button#btnSubmit(type="submit") Submit
