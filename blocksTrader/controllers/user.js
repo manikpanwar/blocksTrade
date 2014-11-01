@@ -4,6 +4,7 @@ var crypto = require('crypto');
 var nodemailer = require('nodemailer');
 var passport = require('passport');
 var User = require('../models/User');
+var Post = require('../models/Post');
 var secrets = require('../config/secrets');
 
 // I modified here
@@ -15,17 +16,24 @@ exports.getNewPost = function(req, res) {
   });
 };
 
-exports.addNewPost = function(req, res) {
-  //if (req.user) return res.redirect('/');
+exports.addNewPost = function(req, res, next) {
 
-  var db = req.db;
-  // var users = db.get("users");
-  res.render('newpost', {
-    title: 'New Post with test aaaaaaahhhh'
+  // User.findOne({_id: req.user.id},function(err,user){
+  //   console.log(user);
+  // });
+
+  console.log(req.user.email);
+  var post = new Post({
+    email: req.user.email,
+    location: req.body.userlocation
   });
-};
 
-//
+  console.log(req.user.id);
+ 
+    post.save(function(err) {
+      res.redirect('/newpost');
+    });
+};
 
 
 /**
