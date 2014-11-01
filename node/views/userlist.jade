@@ -2,8 +2,12 @@ extends layout
 
 block content
     h1.
-        User List
+        Users
     ul
-        each user, i in userlist
+        each user, i in users
             li
-                a(href="mailto:#{user.email}")= user.username
+                {user.username}
+            li 
+                {user.userlocation}
+            li
+                Max waiting time: {user.timeuserwaits}
