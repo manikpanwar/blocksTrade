@@ -2,12 +2,13 @@ extends layout
 
 block content
     h1.
-        Users
+        Users List
     ul
-        each user, i in users
+        each user, i in userlist
             li
-                {user.username}
-            li 
-                {user.userlocation}
+                label #{user.username}
             li
-                Max waiting time: {user.timeuserwaits}
+                label #{user.userlocation}
+            li
+                label Max waiting time: 
+                label #{user.timeuserwaits}
