@@ -14,7 +14,7 @@ results
 tmp
 
 npm-debug.log
-node_modules
+data
 .idea
 *.iml
 .DS_Store
