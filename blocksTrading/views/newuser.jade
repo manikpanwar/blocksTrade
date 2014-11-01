@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    h1= title
+    form#formAddUser(name="adduser",method="post",action="/adduser")
+        input#inputUserName(type="text", placeholder="username", name="username")
+        input#inputUserLocation(type="text", placeholder="userlocation", name="userlocation")
+        input#inputTimeToEat(type="text", placeholder="How long are you going to wait?", name="timetoeat")
+        input(type='hidden', name='_csrf', value=_csrf)
+        button#btnSubmit(type="submit") Submit

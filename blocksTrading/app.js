@@ -21,6 +21,10 @@ var passport = require('passport');
 var expressValidator = require('express-validator');
 var connectAssets = require('connect-assets');
 
+var routes = require('./routes/index');
+var mongo = require('mongodb');
+var monk = require('monk');
+var db = monk('localhost:27017/mydb');
 /**
  * Controllers (route handlers).
  */
@@ -127,6 +131,15 @@ app.post('/account/profile', passportConf.isAuthenticated, userController.postUp
 app.post('/account/password', passportConf.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConf.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConf.isAuthenticated, userController.getOauthUnlink);
+
+
+// Make our db accessible to our router
+app.use(function(req,res,next){
+    req.db = db;
+    next();
+});
+
+app.use('/', routes);
 
 /**
  * API examples routes.
