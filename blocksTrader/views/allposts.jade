@@ -5,7 +5,9 @@ block content
         All Posts
     ul
         each post, i in posts
+            h3. 
+                Post:
             li
-                label #{post.location}
+                label Location: #{post.location}
             li
-                label #{post.email}
+                a(href="mailto:#{user.email}") To buy contact: #{post.email}

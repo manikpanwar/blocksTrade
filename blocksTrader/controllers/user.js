@@ -13,19 +13,13 @@ var router = express.Router();
 // I modified here
 
 exports.allPosts = function(req,res) {
-  var db = req.db;
-  // console.log(db.getCollectionNames());
   Post.find(function(err, posts) {
     console.log(posts);
     res.render('allposts', {
             "posts" : posts
     });
   });
-  // collection.find({},{},function(e,docs){
-  //       res.render('allposts', {
-  //           "posts" : docs
-  //       });
-  //   });
+
 };
 
 exports.getNewPost = function(req, res) {
@@ -41,13 +35,10 @@ exports.addNewPost = function(req, res, next) {
   //   console.log(user);
   // });
 
-  console.log(req.user.email);
   var post = new Post({
     email: req.user.email,
     location: req.body.userlocation
   });
-
-  console.log(req.user.id);
  
     post.save(function(err) {
       res.redirect('/newpost');

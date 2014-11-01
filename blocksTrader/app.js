@@ -142,6 +142,7 @@ app.get('/account/unlink/:provider', passportConf.isAuthenticated, userControlle
 app.get('/newpost', passportConf.isAuthenticated , userController.getNewPost);
 app.post('/addpost', passportConf.isAuthenticated , userController.addNewPost);
 app.get('/allposts', userController.allPosts);
+
 //
 
 /**
