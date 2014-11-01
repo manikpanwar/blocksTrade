@@ -24,42 +24,6 @@ router.get('/userlist',function(req,res){
     });
 });
 
-// http://stackoverflow.com/questions/7990890/how-to-implement-login-auth-in-node-js
-// based on that
-// doesnt work as req.session is undefined
-
-function checkAuth(req, res, next) {
-  if (req.session.user_id) {
-    res.send('You are not authorized to view this page');
-  } else {
-    next();
-  }
-}
-
-router.get('/userloggedinpage', checkAuth, function (req, res) {
-  res.send('if you are viewing this page it means you are logged in');
-});
-
-router.get('/loginpage', function (req, res) {
-  res.render('loginpage',{title: 'User login'});
-});
-
-router.post('/login', function (req, res) {
-  var post = req.body;
-  if (post.username === 'john' && post.userpassword === 'johnspassword') {
-    req.session.user_id = 10; // random
-    res.location('userloggedinpage');
-    res.redirect('/userloggedinpage');
-  } else {
-    res.send('Bad user/pass');
-  }
-});
-
-router.get('/logout', function (req, res) {
-  delete req.session.user_id;
-  res.redirect('/login');
-});  
-
 router.post('/addpost',function(req, res){
     var db = req.db;
     var userName = req.body.username;
@@ -90,14 +54,12 @@ router.post('/addpost',function(req, res){
 router.post('/adduser',function(req,res){
     var db = req.db;
     var userName = req.body.username;
-    var userLocation = req.body.userlocation;
     var userEmail = req.body.useremail;
     var users = db.get("users");
     var timeUserWaits = req.body.timetoeat;
 
     users.insert({
-        "username": userName,
-        "userlocation": userLocation,   
+        "username": userName,   
         "timeuserwaits": timeUserWaits,
         "useremail": userEmail
     },function(err,doc){
