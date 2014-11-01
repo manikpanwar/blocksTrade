@@ -1,22 +1,8 @@
 extends layout
 
 block content
-	h1= title
-	p Welcome to our test
-	p This is Jeremy's website
-
-	// Wrapper
-	#wrapper
-
-		// USER LIST
-		h2 User List
-		#userList
-			table
-				thead
-					th UserName
-					th Email
-					th Delete?
-				tbody
-		// /USER LIST
-
-	// /WRAPPER
+  h1= title
+  div(id="search-form")
+    label Search: 
+      input.search(type="text")
+  
