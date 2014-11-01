@@ -64,7 +64,7 @@ var csrfExclude = ['/url1', '/url2'];
 
 
  //I modified
-  // Make our db accessible to our router
+ // Make our db accessible to our router
   app.use(function(req,res,next){
       req.db = secrets.db;
       next();
@@ -141,6 +141,7 @@ app.get('/account/unlink/:provider', passportConf.isAuthenticated, userControlle
 //Modified
 app.get('/newpost', passportConf.isAuthenticated , userController.getNewPost);
 app.post('/addpost', passportConf.isAuthenticated , userController.addNewPost);
+app.get('/allposts', userController.allPosts);
 //
 
 /**

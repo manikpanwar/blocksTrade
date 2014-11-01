@@ -7,7 +7,26 @@ var User = require('../models/User');
 var Post = require('../models/Post');
 var secrets = require('../config/secrets');
 
+var express = require('express');
+var router = express.Router();
+
 // I modified here
+
+exports.allPosts = function(req,res) {
+  var db = req.db;
+  // console.log(db.getCollectionNames());
+  Post.find(function(err, posts) {
+    console.log(posts);
+    res.render('allposts', {
+            "posts" : posts
+    });
+  });
+  // collection.find({},{},function(e,docs){
+  //       res.render('allposts', {
+  //           "posts" : docs
+  //       });
+  //   });
+};
 
 exports.getNewPost = function(req, res) {
   //if (req.user) return res.redirect('/');

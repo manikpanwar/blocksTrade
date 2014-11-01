@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    h1.
+        All Posts
+    ul
+        each post, i in posts
+            li
+                label #{post.location}
+            li
+                label #{post.email}
