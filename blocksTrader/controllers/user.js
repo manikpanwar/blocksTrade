@@ -17,6 +17,9 @@ exports.getNewPost = function(req, res) {
 
 exports.addNewPost = function(req, res) {
   //if (req.user) return res.redirect('/');
+
+  var db = req.db;
+  // var users = db.get("users");
   res.render('newpost', {
     title: 'New Post with test aaaaaaahhhh'
   });
